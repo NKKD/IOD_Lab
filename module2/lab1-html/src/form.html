@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="/">Home</a>
+      </nav>
+    </header>
+
+    <main>
+      <form method="POST" action="http://localhost:3000/profile">
+      <div>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname">
+      </div>
+      <div>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname">
+      </div>
+      <br>
+      <div>
+        <input type="radio" id="radio-button-1" name="fav_language" value="radio-button-1">
+        <label for="radio-button-1">BUTTON 1</label><br>
+        <input type="radio" id="radio-button-2" name="fav_language" value="radio-button-2">
+        <label for="radio-button-2">BUTTON 2</label><br>
+        <input type="radio" id="radio-button-3" name="fav_language" value="radio-button-3">
+        <label for="radio-button-3">BUTTON 3</label>
+      </div>
+      <br>
+      <div>
+        <input type="checkbox" id="checkbox-1" name="checkbox-1" value="checkbox-1">
+        <label for="checkbox-1"> CHECKBOX 1</label><br>
+        <input type="checkbox" id="checkbox-2" name="checkbox-2" value="checkbox-2">
+        <label for="checkbox-2"> CHECKBOX 2</label><br>
+        <input type="checkbox" id="checkbox-3" name="checkbox-3" value="checkbox-3">
+        <label for="checkbox-3"> CHECKBOX 3</label><br>
+      </div>
+
+
+      </form>
+    </main>
+    <footer>Copyright 2021 &copy;</footer>
+  </body>
+</html>
