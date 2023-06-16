@@ -69,7 +69,7 @@ function findMatchingAnimals(arr, letter) {
   
   console.log(startsWithN);
 
-  // question 4
+// question 4
 console.log("question 4--------------------")
 
 // function camelCase(cssProp) {
@@ -105,8 +105,8 @@ function camelCase(cssProp){
 console.log(camelCase("margin-left"))
 
 
-  // question 5
-  console.log("question 5--------------------")
+// question 5
+console.log("question 5--------------------")
 
 let twentyCents = 0.20
 let tenCents = 0.10
@@ -131,38 +131,246 @@ function currencyAddition(float1, float2) {
 }
 console.log(currencyAddition(3.22, 35.33))
 
-function currencyOperation(float1,float2,operation) {
+function currencyOperation(float1,float2,operation,numDecimals) {
 
-    let number1 = float1.toFixed(2);
-    let number2 = float2.toFixed(2);
+    let number1 = float1.toFixed(numDecimals);
+    let number2 = float2.toFixed(numDecimals);
     operation = String(operation)
 
-    console.log(typeof(operation))
+    // console.log(typeof(operation))
 
     number1 = parseFloat(number1);
     number2 = parseFloat(number2);
 
-    switch (action) {
-        case operation == '+':
+    switch (operation) {
+        case operation = '+':
             result = number1 + number2;
             break;
-        case operation == "-":
+        case operation = "-":
             result = number1 - number2;
             break;
-        case operation == "/":
+        case operation = "/":
             result = number1 / number2;
             break;
-        case operation == "*":
+        case operation = "*":
             result = number1 * number2;    
+            break;
         default:
             result = "input error"
             break;
     }
 
-    return result
+    return result.toFixed(numDecimals)
 }
 
-console.log(currencyOperation(3.22, 35.33,'+'))
-// console.log(currencyOperation(3.22, 35.33,"-"))
-// console.log(currencyOperation(3.22, 35.33,"/"))
-// console.log(currencyOperation(3.22, 35.33,"*"))
+console.log("question c ----------------")
+console.log(currencyOperation(3.22, 35.33,'+',4))
+console.log(currencyOperation(3.22, 35.33,"-",6))
+console.log(currencyOperation(3.22, 35.33,"/",2))
+console.log(currencyOperation(3.22, 35.33,"*",10))
+
+
+// question 6
+console.log("question 6--------------------")
+
+function unique(duplicatesArray) {
+    let arr = duplicatesArray;
+    let uniqueSet = new Set(arr);
+    let uniqueArray = Array.from(uniqueSet);
+    return uniqueArray;
+}
+
+const colours = ['red', 'green', 'blue', 'yellow', 'orange', 'red', 'blue', 'yellow']
+const testScores = [55, 84, 97, 63, 55, 32, 84, 91, 55, 43]
+console.log(unique(colours)) // [ 'red', 'green', 'blue', 'yellow', 'orange' ]
+console.log(unique(testScores)) // [ 55, 84, 97, 63, 32, 91, 43 ]
+
+const number = ['1', '5', '1' , '1', '1', '1', '1', '1', '1']
+console.log(unique(number))
+
+// question 7
+console.log("question 7--------------------")
+
+const books = [
+    { id: 1, title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', year: 1925 },
+    { id: 2, title: 'To Kill a Mockingbird', author: 'Harper Lee', year: 1960 },
+    { id: 3, title: '1984', author: 'George Orwell', year: 1949 },
+    { id: 4, title: 'Brave New World', author: 'Aldous Huxley', year: 1932 },
+    { id: 5, title: 'The Catcher in the Rye', author: 'J.D. Salinger', year: 1951 },
+];
+
+function getBookTitle(bookId) {
+    matchBook = books.find(element => element.id == bookId);
+    return matchBook;
+}
+
+console.log(getBookTitle("2"))
+
+
+function getOldBooks(bookYear) {
+    return bookYear.year > 1950;
+}
+console.log(books.filter(getOldBooks))
+
+
+const updatedArray = books.map((element) => ({
+    ...element, genre : "classic"
+  }));
+console.log(updatedArray);
+
+console.log("question 7.d")
+
+let bookTitles = books.map(arr => arr.author)
+
+function getTitles(titles) {
+    matchTitle = bookTitles.filter(bookTitles => bookTitles[0] == titles)
+    return matchTitle;
+}
+
+console.log(getTitles('A'))
+
+
+
+function latestBook(array) {
+    let years = []
+    index = 0
+    array.forEach(element => {
+        year = element.year
+        years[index] = year
+        index ++
+    });
+    let max = Math.max(...years)
+    index = years.indexOf(max)
+    console.log(array[index])
+}
+latestBook(books)
+
+// question 8
+console.log("question 8--------------------")
+
+const phoneBookDEF = new Map() //an empty map to begin with
+phoneBookDEF.set('Denny', '1231131313')
+phoneBookDEF.set('Evan', '4564646465')
+phoneBookDEF.set('Frank', '789797987897')
+
+const phoneBookABC = new Map() //an empty map to begin with
+phoneBookABC.set('Annabelle', '0412312343')
+phoneBookABC.set('Barry', '0433221117')
+phoneBookABC.set('Caroline', '0455221182')
+
+phoneBookABC.set('Caroline', '95129519515')
+
+function printPhoneBook(contacts) {
+    for (let items of contacts){
+        console.log(items)
+    }
+}
+printPhoneBook(phoneBookABC)
+
+const combinedPhoneBook = new Map([...phoneBookABC,...phoneBookDEF])
+
+for (let names of combinedPhoneBook.keys()){
+    console.log(names)
+}
+
+
+// question 9
+console.log("question 9--------------------")
+
+let salaries = {
+    "Timothy" : 35000,
+    "David" : 25000,
+    "Mary" : 55000,
+    "Christina" : 75000,
+    "James" : 43000
+};
+
+// function sumSalaries(salaries) {
+//     totalSalary = 0
+//     let salariesMap = new Map (Object.entries(salaries))
+//     for (let salary of salariesMap.values()){
+//         totalSalary =+ salary
+//     }
+//     return totalSalary
+// }
+
+// console.log(sumSalaries(salaries))
+
+function topEarner(salaries) {
+    top = []
+    index = 0
+    let salariesMap = new Map (Object.entries(salaries))
+    for (let salary of salariesMap.values()){
+        top[index] = salary
+        index ++
+    }
+    let max = Math.max(...top)
+    maxindex = top.indexOf(max)
+    console.log(top[maxindex])
+    
+    nameList = []
+    index = 0
+    let nameMap = new Map (Object.entries(salaries))
+    for (let name of nameMap.keys()){
+        nameList[index] = name
+        index ++
+    }
+    console.log(nameList[maxindex])
+}
+
+topEarner(salaries)
+
+
+// question 10
+console.log("question 10--------------------")
+
+const today = new Date();
+console.log('Current time is ' + today.toLocaleTimeString())
+console.log(today.getHours() + ' hours have passed so far today')
+
+var date = new Date();
+var hours = date.getHours();
+var minutes = date.getMinutes();
+var totalMinutes = (hours*60) + minutes
+console.log(totalMinutes)
+
+var totalSeconds = totalMinutes * 60
+console.log(totalSeconds)
+
+
+// c) Calculate and print your age as: 'I am x years, y months and z days old'
+
+
+function age() {
+    let currentDate = Date.now();
+    let myDob = Date.parse('1995-07-19')
+    diff = currentDate - myDob;
+
+    console.log(diff)
+
+    seconds = Math.floor(diff / 1000),
+    minutes = Math.floor(seconds / 60),
+    console.log(minutes)   
+    hours = Math.floor(minutes / 60),
+    console.log(hours)
+    numberOfDays = Math.floor(hours / 24);
+
+
+    var years = Math.floor(numberOfDays / 365);
+    var months = Math.floor(numberOfDays % 365 / 30);
+    var days = Math.floor(numberOfDays % 365 % 30);
+
+    console.log('I am ' + years + ' years '+ months + ' months '+'and '+ days + ' days old')
+}
+
+age()
+
+function daysInBetween(date1,date2) {
+    let dateFirst = new Date(date1)
+    let dateSecond = new Date(date2)
+    difference = dateFirst - dateSecond
+    differenceDays = difference/1000/60/60/24
+    console.log(differenceDays)
+}
+
+daysInBetween('2023-12-25', '2023-12-23')
