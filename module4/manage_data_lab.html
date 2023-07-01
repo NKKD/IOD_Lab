@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: #e3f2fd;
+    }
+    .card {
+      padding: 10px;
+    }
+    .card-title, .artist-name{
+      font-weight: 600;
+      font-size: 3em;
+      padding: 0 0 10px 0;
+    }
+
+
+  </style>
+</head>
+
+<body>
+
+<div id="news">
+
+</div>
+
+<template id="news-template">
+  <p class="news-title"> </p>
+  <p class="news-content"> </p>
+</template>
+
+
+<form>
+  <label for="title">News Title:</label>
+  <input type="text" id="title"><br><br>
+  <label for="content">News Content:</label>
+  <input type="text" id="content"><br><br>
+</form>
+
+<button type="button" onclick="handleClick()">Submit</button>
+
+</body>
+
+<script>
+
+  let news=[
+    { id: 1, title: 'News1', content:"bla"},
+    { id: 2, title: 'News2', content:"ble"},
+    { id: 3, title: 'News3', content:"blu"}
+  ];
+
+
+  function reloadNews() {
+    document.getElementById("news").innerHTML = ''
+    displayNews()
+  }
+  function addNewsArticle(article) {
+    const template = document.getElementById("news-template").content.cloneNode(true);
+    template.querySelector(".news-title").innerText = article.title;
+    template.querySelector(".news-content").innerText = article.content;
+    document.querySelector("#news").appendChild(template);
+  }
+
+  function displayNews() {
+    news.forEach(article=> {
+      addNewsArticle (article)
+    })
+
+  }
+  setInterval(reloadNews,5000)
+
+  j = 4
+  function handleClick() {
+    // Your function logic here
+    console.log('Button clicked!');
+    let newTitle = document.getElementById("title").value;
+    let newContent = document.getElementById("content").value;
+    news.push({id: j, title: newTitle, content: newContent})
+    document.getElementById("title").value = ''
+    document.getElementById("content").value = ''
+    j++
+  }
+
+
+</script>
+</html>
