@@ -1,61 +1,27 @@
+//run 'npm init' and accept all the defaults
+//run 'npm install node-fetch'
+//add this line to package.json after line 5: "type": "module",
+import fetch from 'node-fetch'
 
-import('node-fetch')
-globalThis.fetch = fetch;
+globalThis.fetch = fetch
 
-function randomDelay() {
-    return new Promise((resolve) => {
-        const delay = Math.random() * 1000;
-        setTimeout(resolve, delay);
-    });
-}
-
-async function fetchURLData(url) {
-    try {
-        await randomDelay(); // Simulate a random delay before making the request
-        const response = await fetch(url);
-        if (response.status === 200) {
-            return response.json();
-        } else {
-            throw new Error(`Request failed with status ${response.status}`);
-        }
-    } catch (error) {
-        throw new Error(`Request failed: ${error.message}`);
+async function fetchURLDataUsingAsync(url) {
+    let response = await fetch(url);
+    if (response.status === 200) {
+        return await response.json();
+    } else {
+        throw new Error(`Request failed with status ${response.status}`);
     }
 }
 
-async function fetchMultipleURLData(urls) {
+async function test_fetchURLDataUsingAsync() {
     try {
-        const promises = urls.map(url => fetchURLData(url));
-        const responses = await Promise.all(promises);
-        return responses;
-    } catch (error) {
-        throw new Error(`Error fetching multiple URLs: ${error.message}`);
+        var records = await fetchURLDataUsingAsync('https://jsonplaceholder.typicode.com/todos/1');
+        console.log(records);
     }
-}
-
-// Testing with individual URL
-fetchURLData('https://jsonplaceholder.typicode.com/todos/1')
-    .then(data => console.log(data))
-    .catch(error => console.error(error.message));
-
-// Testing with async/await and multiple URLs
-async function testFetchURLData(url) {
-    try {
-        const data = await fetchURLData(url);
-        console.log(data);
-    } catch (error) {
+    catch(error) {
         console.error(error.message);
     }
 }
 
-testFetchURLData('https://jsonplaceholder.typicode.com/todos/1');
-
-// Testing with multiple URLs
-const urls = [
-    'https://jsonplaceholder.typicode.com/todos/1',
-    'https://jsonplaceholder.typicode.com/posts/1'
-];
-
-fetchMultipleURLData(urls)
-    .then(data => console.log(data))
-    .catch(error => console.error(error.message));
+test_fetchURLDataUsingAsync();
