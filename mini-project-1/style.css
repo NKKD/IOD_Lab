@@ -1,0 +1,157 @@
+
+/* Overall background image */
+body {
+    background-image: url("bground.avif.jpg");
+    background-repeat: repeat-y;
+    background-size: cover; /* Resize the background image to cover the entire container */
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+/* Header element CSS style */
+.header {
+    color: white;
+    text-align: center;
+}
+
+/* Navigation bar element CSS style */
+.navbar {
+    padding: 5px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #333;
+}
+
+/* Styling for the navigation links */
+.navbar, ul {
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+/* Styling for the dropdown menu */
+.dropdown {
+    float: left;
+    overflow: hidden;
+}
+
+.dropdown .dropbtn {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    color: white;
+    padding: 16px;
+    background-color: inherit;
+    font-family: inherit;
+    margin: 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.search-button {
+    height: 40px;
+    padding: 5px;
+}
+
+/* Login element CSS style */
+.login-main {
+    color: white;
+    width: 300px;
+    height: 320px;
+    background-color: rgba(25, 25, 25, 0.75);
+    margin: 80px auto 0;
+}
+
+.login-main h3 {
+    padding-top: 30px;
+    padding-left: 20px;
+    justify-content: left;
+    font-size: 18px;
+}
+
+.login-main button {
+    background-color: rgb(88, 164, 78);
+    color: white;
+    font-size: 12px;
+    border: none;
+    height: 40px;
+    padding: 0;
+    width: 260px;
+}
+
+.form-control {
+    width: 260px;
+    border: none;
+    padding: 0;
+}
+
+.login-main input {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    height: 40px;
+    background-color: white;
+}
+
+.login-main form {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.login-main a {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.login-main p {
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.register-button {
+    padding: 5px;
+}

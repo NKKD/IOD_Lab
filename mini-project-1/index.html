@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- The meta tag specifies the character encoding for the document -->
+    <meta charset="UTF-8">
+    <!-- The title element sets the title of the webpage -->
+    <title>Title</title>
+    <!-- Linking an external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<!-- The header section of the webpage -->
+<div class="header">
+    <!-- Heading for the website -->
+    <h1>Welcome to our Website</h1>
+</div>
+
+<!-- The navigation bar section of the webpage -->
+<nav class="navbar">
+    <!-- Unordered list for the main navigation links -->
+    <ul class="main-nav">
+        <!-- Each list item represents a navigation link -->
+        <li><a href="#home" class="nav-links">Home</a></li>
+        <li><a href="#link" class="nav-links">Link</a></li>
+        <!-- Dropdown menu for affiliates -->
+        <li>
+            <div class="dropdown">
+                <button class="dropbtn">Affiliates</button>
+                <!-- The content of the dropdown menu -->
+                <div class="dropdown-content">
+                    <a href="#">Affiliate 1</a>
+                    <a href="#">Affiliate 2</a>
+                    <a href="#">Affiliate 3</a>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <!-- Additional unordered list for search functionality -->
+    <ul>
+        <li><a href="#link">Search</a></li>
+        <li><input type="text" placeholder="Search..." name="search" required  class="search-button"></li>
+    </ul>
+</nav>
+
+<!-- The main section for the login form -->
+<div class="login-main">
+    <!-- Heading for the login section -->
+    <h3>Login</h3>
+    <form>
+        <div class="container">
+            <!-- Input fields for username and password -->
+            <input class="form-control" type="text" placeholder=" Username" name="username" required><br>
+            <input class="form-control" type="text" placeholder=" Password" name="password" required><br>
+            <div class="login-container">
+                <form>
+                    <!-- Dropdown menu for selecting gender -->
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender">
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                        <option value="others">Others</option>
+                    </select>
+                </form>
+            </div><br>
+            <!-- Login button -->
+            <button class="form-control" type="submit">Login</button><br>
+            <!-- Link for user registration -->
+            <a href="#" class="register-button"> Register </a>
+            <!-- Disclaimers section -->
+            <p class="disclaimers"> Disclaimers: None</p>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
