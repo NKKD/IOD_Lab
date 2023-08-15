@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script>
+        async function fetchGameById() {
+            const gameId = document.getElementById('gameID').value;
+            const apiUrl = `http://localhost:3000/api/games/${gameId}`;
+            const headers = {
+                'accept': 'application/json',
+            };
+            try {
+                const response = await fetch(apiUrl, { headers });
+                if (!response.ok) {
+                    throw new Error('Network response was not OK.');
+                }
+                const games = await response.json();
+                displayGameDetails(games);
+            } catch (error) {
+                console.error('Error fetching games with query parameters:', error);
+            }
+        }
+
+        async function fetchGamesWithQuery() {
+            const publisher = document.getElementById('publisher').value;
+            const genre = document.getElementById('genre').value;
+            const title = document.getElementById('title').value;
+            const apiUrl = `http://localhost:3000/api/games?publisher=${publisher}&genre=${genre}&title=${title}`;
+            const headers = {
+                'accept': 'application/json',
+            };
+
+            try {
+                const response = await fetch(apiUrl, { headers });
+                if (!response.ok) {
+                    throw new Error('Network response was not OK.');
+                }
+                const games = await response.json();
+                displayGameDetails(games);
+            } catch (error) {
+                console.error('Error fetching games with query parameters:', error);
+            }
+        }
+
+        function displayGameDetails(games) {
+            let gameDetailsElement = document.getElementById('games-list');
+            gameDetailsElement.innerHTML = '';
+            if(games.length>1){
+                for(let game of games) {
+                    addGameToPage(game);
+                }
+            }
+            else {
+                addGameToPage(games[0])
+            }
+
+        }
+
+        function addGameToPage(game) {
+            var template = document.getElementById("game-card-template").content.cloneNode(true);
+            template.querySelector('.card-title').innerText = game.title;
+            template.querySelector('.card-text').innerText = game.short_description;
+            template.querySelector('.genre').innerText = game.genre;
+            template.querySelector('.card-img-top').src = game.thumbnail;
+            template.querySelector('.game-url').href = game.game_url;
+            document.querySelector('#games-list').appendChild(template);
+        }
+
+
+    </script>
+</head>
+<body>
+<h1>Game Details</h1>
+<label for="publisher">Game Publisher:</label>
+<input type="text" id="publisher" placeholder="Enter publisher ID"><br>
+<label for="genre">Game Genre:</label>
+<input type="text" id="genre" placeholder="Enter genre"><br>
+<label for="title">Game Title:</label>
+<input type="text" id="title" placeholder="Enter game title"><br>
+<button onclick="fetchGamesWithQuery()">Fetch Games with Query Parameters</button><br>
+<label for="gameID">Game ID:</label>
+<input type="text" id="gameID" placeholder="Enter game ID"><br>
+<button onclick="fetchGameById()">Fetch Game by ID</button>
+
+<div id="gameDetails">
+<section>
+    <div class="container">
+        <div id="games-list" class="row justify-content-center">
+        </div>
+        <div id="error-messages" style="display: none;" class="bg-danger m-40 fw-bold"></div>
+    </div>
+</section>
+
+    <template id="game-card-template">
+        <div class="card col-lg-3 col-md-4 col-sm-12 col-xl-2 m-2" style="width: 18rem;">
+            <img class="card-img-top" src="https://www.freetogame.com/g/540/thumbnail.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                    of the
+                    card's content.</p>
+                <p><span class="fw-bold">Genre: </span><span class="genre">Shooter</span></p>
+                <a class="game-url" href="#" class="btn btn-success">Play Game</a>
+            </div>
+        </div>
+    </template>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Details</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM">
+    <link href="games-catalogue.css" rel="stylesheet">
+    <script src="games-client.js" type="module"></script>
+</head>
+
+<body>
+<h1>Game Details</h1>
+<label for="publisher">Game Publisher:</label>
+<input type="text" id="publisher" placeholder="Enter publisher ID"><br>
+<label for="genre">Game Genre:</label>
+<input type="text" id="genre" placeholder="Enter genre"><br>
+<label for="title">Game Title:</label>
+<input type="text" id="title" placeholder="Enter game title"><br>
+<button onclick="fetchGamesWithQuery()">Fetch Games with Query Parameters</button><br>
+<label for="gameID">Game ID:</label>
+<input type="text" id="gameID" placeholder="Enter game ID"><br>
+<button onclick="fetchGameById()">Fetch Game by ID</button>
+
+<div id="gameDetails">
+    <section>
+        <div class="container">
+            <div class="row justify-content-center" id="games-list">
+            </div>
+            <div class="bg-danger m-40 fw-bold" id="error-messages" style="display: none;"></div>
+        </div>
+    </section>
+
+    <template id="game-card-template">
+        <div class="card col-lg-3 col-md-4 col-sm-12 col-xl-2 m-2" style="width: 18rem;">
+            <img class="card-img-top" src="https://www.freetogame.com/g/540/thumbnail.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk
+                    of the
+                    card's content.</p>
+                <p><span class="fw-bold">Genre: </span><span class="genre">Shooter</span></p>
+                <a class="game-url" href="#" class="btn btn-success">Play Game</a>
+            </div>
+        </div>
+    </template>
+
+</div>
+</body>
+</html>
