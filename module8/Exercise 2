@@ -1,0 +1,70 @@
+db.createCollection("UserModel")
+db.createCollection("PostModel")
+db.createCollection("LikeModel")
+db.createCollection("CommentModel")
+
+show collections
+
+db.UserModel.insertOne(
+    {
+        "UserID" : "123456",
+        "UserName" : "lalalala",
+        "UserDOB" : "2000/02/02",
+        "UserGender" : "Male",
+        "Email" : "aaaa@aaa.com",
+        "Password" : "aaaaa123"
+    }
+)
+
+db.PostModel.insertOne(
+    {
+        "postID" : "000224025215485201",
+        "UserID" : "123456",
+        "postContent" : "hello there",
+        "postData" : new Date()
+    }
+)
+
+db.LikeModel.insertMany(
+    {
+        "likeID" : "66556453151",
+        "postID" : "000224025215485201",
+        "UserID" : "123456",
+    },
+
+    {
+        "likeID" : "4652318312",
+        "postID" : "000224025215485201",
+        "UserID" : "851513",
+    },
+
+    {
+        "likeID" : "431312385",
+        "postID" : "000224025215485201",
+        "UserID" : "645648",
+    }
+
+)
+
+db.CommentModel,insertMany(
+    {
+        "commentID" : "12314532"
+        "postID" : "000224025215485201",
+        "UserID" : "565123"
+        "commentContent" : "lololololol"
+        "commentDate" : new Date()
+    },
+
+    {
+        "commentID" : "513016546"
+        "postID" : "000224025215485201",
+        "UserID" : "8861320"
+        "commentContent" : "hahahahahahaha"
+        "commentDate" : new Date()
+    }
+)
+
+db.UserModel.find()
+db.PostModel.find()
+db.LikeModel.find()
+db.CommentModel.find()

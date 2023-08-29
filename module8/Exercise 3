@@ -1,0 +1,74 @@
+/* show databases;
+
+create database Blogging_APP;
+
+use Blogging_APP; */
+
+SHOW TABLES
+
+CREATE TABLE User_Model (
+	UserID INT NOT NULL,
+	UserName VARCHAR(30) NOT NULL,
+	UserDOB DATE,
+	UserGender VARCHAR(5),
+	Email VARCHAR(30) NOT NULL,
+	Password VARCHAR(30) NOT NULL,
+	PRIMARY KEY(UserID)
+);
+
+INSERT INTO User_Model(UserID, UserName, UserDOB, UserGender, Email, Password)
+VALUES (123, 'AAAA', '2000/02/02', 'M', 'SOMETHING@SOMETHING', 'ABACBACBABC' );
+INSERT INTO User_Model(UserID, UserName, UserDOB, UserGender, Email, Password)
+VALUES (456, 'BBBB', '2003/03/03', 'F', 'SOMETHINGFEMALE@SOMETHING', 'QEWEEWQRQREQRQW' );
+INSERT INTO User_Model(UserID, UserName, UserDOB, UserGender, Email, Password)
+VALUES (789, 'CCC', '2004/04/04', 'S', 'SOMETHINGSSAFA@SOMETHING', 'SFKFJDS;FJADSFJS' );
+
+UPDATE User_Model SET UserDOB = '2002/02/02' WHERE UserID = 123;
+SELECT * FROM User_Model;
+DELETE FROM User_Model WHERE UserID = 789;
+
+
+CREATE TABLE Post_Model (
+	postID INT NOT NULL,
+	UserID INT NOT NULL,
+	postContent VARCHAR(50) NOT NULL,
+	postDate DATE NOT NULL,
+	PRIMARY KEY(postID),
+	FOREIGN KEY(UserID) REFERENCES User_Model(UserID)
+);
+
+INSERT INTO Post_Model VALUES (123456, 123, 'RANDOM THINGS', '2022-12-18');
+INSERT INTO Post_Model VALUES (789456, 456, 'RANDOM RANDOM THINGS', '2023-02-22');
+
+UPDATE Post_Model SET postContent = 'NOT RANDOM THINGS' WHERE UserID = 123;
+SELECT * FROM Post_Model;
+
+
+CREATE TABLE Like_Model (
+	UserID INT NOT NULL,
+	likeID INT NOT NULL,
+	postID INT NOT NULL,
+	PRIMARY KEY(likeID),
+	FOREIGN KEY(UserID) REFERENCES User_Model(UserID),
+	FOREIGN KEY(postID) REFERENCES Post_Model(postID)
+);
+
+INSERT INTO Like_Model VALUES (123, 85296385, 123456);
+INSERT INTO Like_Model VALUES (456, 74185296, 789456);
+
+UPDATE Like_Model SET postContent = 'NOT RANDOM THINGS' WHERE UserID = 123;
+SELECT * FROM Like_Model;
+
+CREATE TABLE Comment_Model (
+    commentID INT NOT NULL,
+    postID INT NOT NULL,
+    UserID INT NOT NULL,
+    commentContent VARCHAR(50) NOT NULL,
+    commentDate DATE NOT NULL,
+    PRIMARY KEY(commentID),
+	FOREIGN KEY(UserID) REFERENCES User_Model(UserID),
+	FOREIGN KEY(postID) REFERENCES Post_Model(postID)
+
+);
+
+

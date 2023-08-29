@@ -1,0 +1,79 @@
+Phsyical model:
+
+User model:
+    UserID: INT
+    UserName: VARCHAR(30)
+    UserDOB: DATE
+    UserGender: VARCHAR(30)
+    Email: VARCHAR(30)
+    Password: VARCHAR(30)
+
+Post model:
+    postID: INT
+    UserID: INT
+    postContent: VARCHAR(50)
+    postData: DATE
+
+
+Like model:
+    likeID: INT
+    postID: INT
+    UserID: INT
+
+Comment model:
+    commentID: INT
+    postID: INT
+    UserID: INT
+    commentContent: VARCHAR(50)
+    commentDate: DATE
+
+
+Logical model:
+
+
+User model:
+    UserID (Primary key)
+    UserName
+    UserDOB
+    UserAge
+    UserGender
+    Email
+    Passworl
+
+Post model:
+    postID (Primary key)
+    UserID (Foreign key)
+    (relationship with UserID: one User can have many Posts)
+    postContent
+    postData
+
+
+Like model:
+    likeID (Primary key)
+    postID (Foreign key)
+    (relationship with postID: one Post can have many Likes)
+    UserID (Foreign key)
+    (relationship with UserID: one Like can have many UserID)
+    numberOfLikes
+
+Comment model:
+    commentID (Primary key)
+    postID (Foreign key)
+    (relationship with postID: one Post can have many Comments)
+    UserID (Foreign key)
+    (relationship with UserID: one Comment can have one UserID)
+    commentContent
+    commentDate
+
+
+Redis
+
+User Cache:
+    UserID
+    UserName
+    Email
+    Password
+
+Comment Cache:
+    commentContent
+    commentID
